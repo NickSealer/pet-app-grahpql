@@ -1,0 +1,354 @@
+# To see all cops, see:
+# http://rubocop.readthedocs.io/en/latest/cops/
+# For configuration details and how to locally disable cops, see:
+# https://github.com/rubocop-hq/rubocop/blob/master/config/default.yml
+
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - '**/assets/**/*'
+    - '**/javascript/**/*'
+    - '**/views/**/*'
+    - '**/bin/**/*'
+    - '**/coverage/**/*'
+    - '**/db/migrate/*'
+    - '**/db/**/schema.rb'
+    - '**/log/**/*'
+    - '**/public/**/*'
+    - '**/storage/**/*'
+    - '**/script/**/*'
+    - '**/vendor/**/*'
+    - '**/tmp/**/*'
+    - '**/node_modules/**/*'
+  ExtraDetails: true
+  NewCops: enable
+  TargetRubyVersion: 2.7
+
+# Bundler
+Bundler/OrderedGems:
+  Enabled: true
+
+# Layout
+Layout/BlockAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: start_of_block
+
+Layout/EndAlignment:
+  AutoCorrect: true
+  Enabled: true
+  EnforcedStyleAlignWith: keyword
+
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+  Enabled: true
+
+Layout/FirstArrayElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/FirstParameterIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/ArgumentAlignment:
+  Enabled: false
+
+Layout/ArrayAlignment:
+  Enabled: false
+
+Layout/CaseIndentation:
+  Enabled: false
+
+Layout/CommentIndentation:
+  Enabled: false
+
+Layout/ConditionPosition:
+  Enabled: false
+
+Layout/DefEndAlignment:
+  Enabled: false
+
+Layout/ElseAlignment:
+  Enabled: false
+
+Layout/EmptyComment:
+  Enabled: false
+
+Layout/EmptyLineBetweenDefs:
+  Enabled: false
+
+Layout/EmptyLines:
+  Enabled: false
+
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: false
+
+Layout/FirstHashElementIndentation:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Layout/HeredocIndentation:
+  Enabled: false
+
+Layout/IndentationConsistency:
+  Enabled: false
+
+Layout/IndentationWidth:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 300
+  Exclude:
+    - '**/db/**/*'
+
+# Lint
+Lint/EmptyBlock:
+  Enabled: false
+
+Lint/LiteralAsCondition:
+  Enabled: true
+  Exclude:
+    - '**/serializers/user/user_serializer.rb'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - '**/spec/**/*'
+
+Lint/InheritException:
+  Enabled: true
+  EnforcedStyle: standard_error
+
+Lint/MultipleComparison:
+  AutoCorrect: false
+  Details: 'Use y.between?(x,z) instead of x < y < z'
+  Enabled: true
+
+Lint/Void:
+  CheckForMethodsWithNoSideEffects: true
+  Enabled: true
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/NonDeterministicRequireOrder:
+  Enabled: false
+
+# Metrics
+Metrics/BlockNesting:
+  Exclude:
+  - '**/app/services/apex_service.rb'
+
+Metrics/ParameterLists:
+  Enabled: true
+  Exclude:
+  - '**/controllers/*'
+
+Metrics/AbcSize:
+  Max: 300
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 70
+  Exclude:
+    - '**/db/**/*'
+
+Metrics/CyclomaticComplexity:
+  Max: 50
+
+Metrics/PerceivedComplexity:
+  Max: 50
+
+# Naming
+Naming/HeredocDelimiterNaming:
+  Enabled: true
+  Exclude:
+    - '**/config/**/*'
+
+Naming/PredicateName:
+  AllowedMethods:
+    - is_a?
+    - is_using_in
+    - has_related_questions
+  Enabled: true
+  Exclude:
+    - '**/app/serializers/**/*'
+    - '**/spec/**/*'
+  ForbiddenPrefixes:
+    - is_
+
+Naming/VariableNumber:
+  Enabled: true
+  Exclude:
+    - '**/spec/**/*'
+    - '**/db/**/*'
+
+Naming/FileName:
+  Enabled: true
+  Exclude:
+    - '**/initializers/rswag-ui.rb'
+
+# Performance
+Performance/StartWith:
+  AutoCorrect: true
+  Enabled: true
+
+Performance/TimesMap:
+  AutoCorrect: true
+  Enabled: true
+
+# RSpec
+RSpec/BeforeAfterAll:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/ExpectInHook:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: true
+  Max: 5
+
+RSpec/ExampleLength:
+  Enabled: true
+  Max: 50
+
+RSpec/EmptyExampleGroup:
+  Enabled: true
+  Exclude:
+    - '**/spec/requests/**/*.rb'
+
+RSpec/VariableName:
+  Enabled: true
+  Exclude:
+    - '**/spec/requests/**/*.rb'
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: true
+  Max: 20
+
+# Rails
+Rails/DynamicFindBy:
+  Enabled: true
+  Whitelist:
+    - find_by_sql
+    - find_by_english_name
+    - find_by_email
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/FindBy:
+  Enabled: true
+  Include:
+    - '**/*.rb'
+
+Rails/FindEach:
+  Enabled: true
+  Include:
+    - '**/*.rb'
+
+Rails/InverseOf:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Rails/ReflectionClassName:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/Output:
+  Enabled: true
+  Exclude:
+    - '**/config/puma.rb'
+    - '**/initializers/booting.rb'
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+# Style
+Style/ConditionalAssignment:
+  Exclude:
+  - '**/app/services/apex_service.rb'
+  - '**/app/services/plaid_service.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Style/TernaryParentheses:
+  Enabled: false
+
+Style/ReturnNil:
+  Description: 'Use return instead of return nil.'
+  Enabled: true
+  EnforcedStyle: return
+  SupportedStyles:
+    - return
+    - return_nil
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  Exclude:
+  - '**/serializers/**/*'
+
+Style/CollectionMethods:
+  Description: 'Preferred collection methods.'
+  StyleGuide: '#map-find-select-reduce-include-size'
+  Enabled: true
+  Safe: false
+  PreferredMethods:
+    collect: 'map'
+    collect!: 'map!'
+    inject: 'reduce'
+    detect: 'find'
+    find_all: 'select'
+    member?: 'include?'
+
+Style/FormatStringToken:
+  Enabled: false
+
+# Security
+Security/MarshalLoad:
+  Enabled: false
+
+EnvironmentVariableAccess:
+  AllowReads: true
