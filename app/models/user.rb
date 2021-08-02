@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def calculate_age
     self.age = Time.zone.now.year - birthdate.to_date.year
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

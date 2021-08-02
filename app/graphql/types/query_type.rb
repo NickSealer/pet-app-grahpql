@@ -6,14 +6,35 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :users, [Types::UserType], null: false
+    field :pets, [Types::PetType], null: false
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: 'An example field added by the generator'
-    def test_field
-      'Hello World!'
+    field :user, Types::UserType, null: false do
+      argument :id, ID, required: true
+    end
+
+    field :pet, Types::PetType, null: false do
+      argument :id, ID, required: true
+    end
+
+    # Index RESTful
+    def users
+      User.all
+    end
+
+    # Show RESTful
+    def user(id:)
+      User.find(id)
+    end
+
+    # Index RESTful
+    def pets
+      Pet.all
+    end
+
+    # Show RESTful
+    def pet(id:)
+      Pet.find(id)
     end
   end
 end
