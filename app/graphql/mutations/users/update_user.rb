@@ -9,7 +9,7 @@ module Mutations
 
       def resolve(id:, params:)
         user = User.find_by(id: id)
-        user.update(params) if user
+        user&.update(params)
 
         begin
           { user: user }

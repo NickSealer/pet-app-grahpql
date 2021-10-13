@@ -8,7 +8,7 @@ module Mutations
 
       def resolve(id:)
         user = User.find_by(id: id)
-        user.destroy if user
+        user&.destroy
         { user: user }
       end
     end

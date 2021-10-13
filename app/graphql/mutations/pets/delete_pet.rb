@@ -8,7 +8,7 @@ module Mutations
 
       def resolve(id:)
         pet = Pet.find_by(id: id)
-        pet.destroy if pet
+        pet&.destroy
         { pet: pet }
       end
     end
