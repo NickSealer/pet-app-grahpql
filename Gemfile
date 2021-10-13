@@ -22,6 +22,7 @@ gem 'puma', '~> 3.11'
 # gem 'mini_magick', '~> 4.8'
 
 gem 'graphql'
+gem 'graphiql-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -46,8 +47,6 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.17'
   gem 'pry'
-
-  gem 'graphiql-rails'
 
   gem 'rails-controller-testing', '~> 1.0.5'
   gem 'rspec', '~> 3.10'
