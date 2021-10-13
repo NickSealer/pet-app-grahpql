@@ -1,0 +1,33 @@
+<style media="screen">
+  .btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #FFF;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    border: double;
+    background: linear-gradient(to right, #6441a5, #2a0845);
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    transition: .4s;
+  }
+
+  .btn:hover{
+    -webkit-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    transform: rotate(20deg);
+  }
+</style>
+
+<div style="width: 100%; text-align: center; margin-top: 80px;">
+  <img style="width: 500px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/2048px-GraphQL_Logo.svg.png" alt="grahpql">
+  <span style="padding: 70px;"></span>
+  <img style="width: 455px;" src="https://www.pngkey.com/png/full/749-7492383_ruby-on-rails-png.png" alt="rubi on rails">
+</div>
+
+<div style="width: 100%; text-align: center; margin-top: 50px;">
+  <%= link_to 'Show me', '/graphiql', class: 'btn' %>
+</div>
