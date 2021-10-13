@@ -6,7 +6,7 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # RESTful resources
+    # GraphQL resources
     field :users, resolver: Queries::Users::Index
     field :user, resolver: Queries::Users::Show
 

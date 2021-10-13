@@ -6,6 +6,7 @@ module Types
       argument :first_name, String, required: true
       argument :last_name, String, required: true
       argument :email, String, required: true
+      argument :password, String, required: true
       argument :nickname, String, required: true
       argument :age, Integer, required: true
       argument :phone_number, String, required: true
