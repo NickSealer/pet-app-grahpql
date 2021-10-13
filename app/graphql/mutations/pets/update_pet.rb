@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
 module Mutations
-  module Users
-    class Update < Mutations::BaseMutation
+  module Pets
+    class UpdatePet < Mutations::BaseMutation
       argument :id, ID, required: true
       argument :params, GraphQL::Types::JSON, required: true
-      field :user, Types::UserType, null: false
+      field :pet, Types::PetType, null: false
 
       def resolve(id:, params:)
-        user = User.find_by(id: id)
-        user.update(params) if user
+        pet = Pet.find_by(id: id)
+        pet.update(params) if pet
 
         begin
-          { user: user }
+          { pet: pet }
         rescue ActiveRecord::RecordInvalid => e
           GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}: #{e.record.errors.full_messages.join(', ')}")
         end

@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 module Mutations
-  module Users
-    class Create < Mutations::BaseMutation
-      argument :params, Types::Inputs::UserInputType, required: true
-      field :user, Types::UserType, null: false
+  module Pets
+    class CreatePet < Mutations::BaseMutation
+      argument :params, Types::Inputs::PetInputType, required: true
+      field :pet, Types::PetType, null: false
 
       def resolve(params:)
-        user_params = Hash params
-        user = User.create(user_params)
+        pet_params = Hash(params)
+        pet = Pet.create(pet_params)
 
         begin
-          { user: user }
+          { pet: pet }
         rescue ActiveRecord::RecordInvalid => e
           GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}: #{e.record.errors.full_messages.join(', ')}")
         end

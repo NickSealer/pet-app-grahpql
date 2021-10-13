@@ -34,7 +34,7 @@ module Types
     end
 
     def full_name
-      object.full_name
+      object&.full_name
     end
   end
 end

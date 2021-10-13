@@ -12,7 +12,7 @@ module Types
     field :owner_name, String, null: true
 
     def owner_name
-      object.owner.full_name
+      object&.owner&.full_name
     end
   end
 end

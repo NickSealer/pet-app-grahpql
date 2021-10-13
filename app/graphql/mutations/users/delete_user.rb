@@ -2,7 +2,7 @@
 
 module Mutations
   module Users
-    class Delete < Mutations::BaseMutation
+    class DeleteUser < Mutations::BaseMutation
       argument :id, ID, required: true
       field :user, Types::UserType, null: false
 
